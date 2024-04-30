@@ -33,12 +33,18 @@ class AutentikasiController extends Controller
         $user = User::where('email', $request->email)->first();
         $validator = \Validator::make($request->all(), [
             'password'    => [
-                function ($attribute, $value, $fail) {
+                function ($attribute, $value, $fail) use ($request, $user) {
                     if (!\Hash::check($request->password, $user->password))
                         $fail('Password yang anda masukkan salah');
                 }
             ]
         ]);
+
+        if (!\Hash::check($request->password, $user->password)) {
+            // $validator->errors()->add('email', 'Email atau password yang anda masukkan salah');
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         \Auth::login($user, $request->filled('remember'));
         if ($request->query('redirect'))
             return redirect($request->query('redirect'));
