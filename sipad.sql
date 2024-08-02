@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Apr 25, 2024 at 07:39 AM
--- Server version: 5.7.34
--- PHP Version: 8.0.8
+-- Generation Time: Aug 02, 2024 at 02:13 PM
+-- Server version: 5.7.39
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sipad`
+-- Database: `sipad_nur`
 --
 
 -- --------------------------------------------------------
@@ -44,11 +44,20 @@ CREATE TABLE `arsip` (
   `tempat` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `pengundang` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `delegasi_hadir` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `uuid` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `kantor_id` bigint(20) UNSIGNED NOT NULL,
   `disk` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `arsip`
+--
+
+INSERT INTO `arsip` (`id`, `judul_surat`, `no_surat`, `jenis_dokumen_id`, `pengirim`, `penerima`, `tanggal`, `berkas`, `nama_berkas`, `ekstensi_berkas`, `keterangan`, `maksud_surat`, `acara`, `tempat`, `pengundang`, `delegasi_hadir`, `uuid`, `created_at`, `updated_at`, `kantor_id`, `disk`) VALUES
+(1, 'test', 'dsasda', 1, 'dasmkasd', NULL, '2024-08-02', 'kantor_pusat@sipad.com/surat_masuk/2024-08-02/update.sql/hx25wz1WU72BGN3pt2DH8KgyWG0tQNLGAV7IKt1y.txt', 'update.sql', 'sql', NULL, 'dsadsa', NULL, NULL, NULL, NULL, '14ea20c8-c6a6-47dc-94f0-72f25aa6f9f9', '2024-08-02 13:36:04', '2024-08-02 13:36:04', 1, 'dropbox'),
+(2, 'test', 'dsasda', 2, NULL, 'dklas', '2024-08-02', 'kantor_pusat@sipad.com/surat_keluar/2024-08-02/zipupdate.sh/svTcYrmRRqyZBhUZhmNQkh2uIlN7x5A659KamgMM.txt', 'zipupdate.sh', 'sh', NULL, NULL, NULL, NULL, NULL, NULL, '136e8bd5-53e9-4c01-bece-ae58c6000791', '2024-08-02 14:02:58', '2024-08-02 14:02:58', 1, 'dropbox');
 
 -- --------------------------------------------------------
 
@@ -76,16 +85,16 @@ CREATE TABLE `contoh` (
 --
 
 INSERT INTO `contoh` (`id`, `ini_text`, `ini_number`, `ini_email`, `ini_datepicker`, `ini_gambar`, `ini_excel`, `ini_file`, `ini_textarea`, `ini_select`, `ini_select2`, `ini_password`) VALUES
-(1, 'DSBId', '6', 'laila24@gmail.com', '2001-12-23', 'public/ini_gambar/0B0znS9te9bSD87ALjFD.jpg', 'public/ini_excel/N9kRv2gy8iciwDpnpqHj.xlsx', 'public/ini_file/Iu3CIPrkvg1I8N9AMAIs.pdf', 'Commodi voluptas architecto sit quia. Sed vel nisi fugit facere quisquam corrupti. Ut atque sint tempora alias itaque vitae est.', 'Option 2', 'Option 1', '$2y$10$DMY/pSJC4YTAE.RwMHgyO.PozdeKihe1FCJfttoz97Swdxoh5f08S'),
-(2, 'aFIdL', '5', 'nnatsir@yahoo.com', '1988-03-05', 'public/ini_gambar/NWzaYF3zgtGWrgHmyPsB.jpg', 'public/ini_excel/WSgjWdVimVfghsG3ulb8.xlsx', 'public/ini_file/V165xGujn48JTF55VCtI.pdf', 'Voluptatibus excepturi et sed dolor unde. Eligendi ab ut velit iusto sed amet. Quaerat qui occaecati animi commodi id. Tempora voluptas architecto sint omnis animi. Ea quisquam accusantium et.', 'Option 2', 'Option 1', '$2y$10$u.nAMeUJRVsOmnCoEfgPHOnDOXk.MKmVXAovffSSASt5c8ysqox96'),
-(3, 'UGGUA', '5', 'tami.gunawan@yahoo.co.id', '2000-11-15', 'public/ini_gambar/H9qqUqnCE9Qx5gNpdJKC.jpg', 'public/ini_excel/x6k5Tju2I44RGT8D2fO6.xlsx', 'public/ini_file/TVtfejNjTIB6bYYEaACf.pdf', 'Ab illo nam maxime. Dignissimos qui nisi magni laboriosam sint provident. Dolore doloremque quia dolorum eius iste officia ea. Quam saepe repellat doloribus minima.', 'Option 1', 'Option 1', '$2y$10$3IOEs0ybHe0IZ/cXfnVMq.E7fFKph9527NClWvS7nCHxTQ9EUqGYi'),
-(4, 'GLd6f', '2', 'setiawan.embuh@riyanti.info', '2018-12-26', 'public/ini_gambar/HmE2frlGSmcHnnWIJtJ3.jpg', 'public/ini_excel/AJWHiwTA95ywPt8QQKYn.xlsx', 'public/ini_file/92oKqYQnGvNrpNz0TMNM.pdf', 'Et et voluptatem aliquam et totam nam laboriosam quas. Et quos impedit ratione harum veritatis. Magnam ea et a. Quia voluptas voluptates dolor quod.', 'Option 2', 'Option 2', '$2y$10$365RtEoCY7A8ck/QXxOa7uWlGaIU10.Q9wChEiH4XKA9gnDdvaztu'),
-(5, 'ei0AX', '5', 'cayadi73@yahoo.com', '2004-10-16', 'public/ini_gambar/bb2KXX8Wwxzd7J0biFpw.jpg', 'public/ini_excel/3EGeOthpTZoTMq8HcMCv.xlsx', 'public/ini_file/oTu71EnawhgA7DySuxO0.pdf', 'Cumque ut impedit velit officiis et nam quisquam. Qui quas minus numquam molestias enim aut maxime. Eius voluptas fugiat non sint excepturi voluptate aut amet.', 'Option 1', 'Option 1', '$2y$10$MB/whwXX3D/FYMZaRy3UbegmRC.vYfS8jU/gY8SVOBJcdkwEeN3Ve'),
-(6, 'uvQqg', '7', 'permadi.suci@winarno.net', '2010-03-23', 'public/ini_gambar/qJvazdtgdFN4IW4N7cJ1.jpg', 'public/ini_excel/DVyj7FPSXts7tQxPyaH4.xlsx', 'public/ini_file/Yze179DXxdcTVSl8Gxyb.pdf', 'Quae occaecati sed sit quia omnis. Necessitatibus voluptatem qui fuga minus atque maiores natus quidem. Voluptatem illum odio quae eos et laborum.', 'Option 1', 'Option 2', '$2y$10$B0oYC2hEj3ghXG1mtMLGSumYMcxGEToYE/g4TTYUh6AFm9Uec4/Ty'),
-(7, 'zO6kS', '2', 'warsa43@usamah.name', '2002-08-03', 'public/ini_gambar/8zvMcBCRGhXOD8WkSLn7.jpg', 'public/ini_excel/AgcbddVslCKw7jK2IRW3.xlsx', 'public/ini_file/PAWZ8O03AGgDC9vah5ot.pdf', 'Autem libero et voluptate repellendus. Perspiciatis optio non corrupti vero facere. Quae voluptates minus aut. Id non ut dolorum odio.', 'Option 2', 'Option 2', '$2y$10$dBbcWXUIgZbfj4z68O2V0OetFsaAJjy/7/EoNcHsAPjzuFCFwBJh.'),
-(8, 'QIcWr', '4', 'vsalahudin@permata.name', '2018-05-31', 'public/ini_gambar/JdnregMDRx7wSbafdLyL.jpg', 'public/ini_excel/yiDALvo3i2mxwM3unK2J.xlsx', 'public/ini_file/5N4LFe27l0NsTkk2xj0h.pdf', 'Doloremque et quo aut est at voluptatem. Ab ut quis sit error et autem dicta alias. Et voluptatibus magnam totam in exercitationem dolorum omnis. Quo nostrum totam tempore amet.', 'Option 2', 'Option 2', '$2y$10$vhHCnxunLtqWS9NvozXpHeAcjmqKvhs/8G4PoVWXGZjC2BSaXVzP6'),
-(9, 'ZCJAd', '6', 'mangunsong.ganep@yahoo.co.id', '1987-12-13', 'public/ini_gambar/50vVF9Nvr31u1ND3RPkK.jpg', 'public/ini_excel/D5KBG3qqVkFLnhqCGkJk.xlsx', 'public/ini_file/0U5cT5RHO5pukW3z2pbr.pdf', 'Expedita nihil consequatur dolorum totam eveniet. Exercitationem sed amet ut aperiam. Tempora molestiae libero ea molestias non atque repellendus.', 'Option 2', 'Option 1', '$2y$10$sW2nGl7H7t/2foMZ.qc1v.IeGdlWJ/tipowCGB4OeFtde32eaJ82K'),
-(10, '6oer8', '4', 'kamaria.saefullah@lailasari.org', '2005-11-12', 'public/ini_gambar/i6Ivrqac9IEfPJmd1mev.jpg', 'public/ini_excel/9PAmwg2q1NN36pas9Ogw.xlsx', 'public/ini_file/FGkWFBrWlWPT2fmmJDfg.pdf', 'Omnis in vel rerum libero. Numquam non debitis odio itaque ipsa. Provident ullam eos et molestiae. Sequi omnis nesciunt temporibus error neque labore earum inventore. Voluptate et eveniet vitae ea.', 'Option 1', 'Option 2', '$2y$10$1bWtklWlQKy3BYAcyukzOurmjdtO99Uc4YeWWRNMowotQqCGa67aG');
+(1, 'O6Qvg', '9', 'setiawan.jaya@kurniawan.co.id', '1972-09-29', 'public/ini_gambar/0c6JiVkE7UdfeDyPzmDJ.jpg', 'public/ini_excel/DE9Ldi6F5GWnINVtsuMi.xlsx', 'public/ini_file/EtPtVom4RSVm8IF8wEHK.pdf', 'Velit quia ut aut temporibus. Enim nulla hic sapiente repudiandae. Eos quas molestias a quos maxime non quos. Suscipit ducimus incidunt quia animi. A temporibus vel repellendus aut.', 'Option 2', 'Option 1', '$2y$10$hHrQmpAZ7WPF479wCxj23euzTDb1CKuyQnNb9Ml61mLPy3qVTMWoS'),
+(2, 'QzTXC', '8', 'gabriella.marbun@hastuti.co', '2000-03-17', 'public/ini_gambar/zdGpvIMBtsHvScUWGmeH.jpg', 'public/ini_excel/Wt6OAN9AUeOrXhTbMz6v.xlsx', 'public/ini_file/VtyDRLsRoQnXMdqOuEJG.pdf', 'Omnis hic odit repellendus minima. Similique omnis molestiae veritatis provident. A omnis sit ea molestiae est ratione nulla quos. Porro fugiat dicta officiis accusantium.', 'Option 2', 'Option 2', '$2y$10$xBIt/.qheWn8zO52RSEtZ.39B1enXnwm2w.Guwn5tE6LsZRDAcloG'),
+(3, 'RQ3TM', '0', 'winda17@yuliarti.biz.id', '2012-01-20', 'public/ini_gambar/hJ9sdJAJCpQfmJJe0H2R.jpg', 'public/ini_excel/IfAmV3xzHWvfgZQB9qD5.xlsx', 'public/ini_file/o8Sbh2hAnOrQNA5ZeidL.pdf', 'Sit adipisci ipsam temporibus illum totam. Odio et atque vel possimus quaerat corrupti et. Neque exercitationem corporis eum temporibus. Animi commodi exercitationem in commodi.', 'Option 1', 'Option 2', '$2y$10$c2qgEL2e0pTEK6f8nwZwAe4dnFr4xWG3ZMtTIK9o8gBft7FZidZvm'),
+(4, 'TrxdK', '0', 'owahyuni@haryanti.name', '2008-04-17', 'public/ini_gambar/4ZRo2tav4apdi7e7DecT.jpg', 'public/ini_excel/qcrQHyzfVBqO9AMZqLih.xlsx', 'public/ini_file/xMn3yomhgQYAx6rL1SUh.pdf', 'Consequatur dolor quo autem sit maiores. Distinctio rerum explicabo dolorem velit vel. Nam vitae dolorem ipsum omnis sed eveniet et.', 'Option 1', 'Option 2', '$2y$10$8SuU47myAB3HJiZOPJArwOCJ.hn1lutv3Oqu7CZKsAdv3OZUZa1vG'),
+(5, '19ahl', '6', 'wibowo.bala@dongoran.asia', '2001-07-15', 'public/ini_gambar/iODWaqbWQdRvEMqqCtkc.jpg', 'public/ini_excel/x08lMDCZcCaYkj3Mhj8P.xlsx', 'public/ini_file/ZUnldNupX1zIckjiVYy1.pdf', 'Autem iusto adipisci quod illo et accusamus. Consequatur mollitia necessitatibus veniam quisquam perferendis quisquam officiis. Explicabo inventore rerum at et et explicabo autem.', 'Option 1', 'Option 2', '$2y$10$yxvVrcqEcQdw9NOg5ksBeuzpzVAfaCyMSFQRZCA15Lygrzbh2b.zu'),
+(6, 'jvw6i', '9', 'cager.sihombing@firmansyah.name', '2018-05-15', 'public/ini_gambar/LyFi6ZCxDIIl9z3pkNrc.jpg', 'public/ini_excel/wFr80zbrhmGaHwKrYox9.xlsx', 'public/ini_file/1pPdkKnFa9Sb6I8gGZtA.pdf', 'Aut possimus non suscipit deleniti sit aut omnis. Ducimus minus possimus dolore alias vero nam nihil. Cupiditate cum consectetur sunt maiores repellat maiores ab.', 'Option 1', 'Option 2', '$2y$10$Yff0W1fPgMheiDziZxef0emykSSyDsdz93ptMe8xYvLzPpkes2yly'),
+(7, 'lpMN9', '0', 'wastuti.wirda@gmail.co.id', '2012-04-19', 'public/ini_gambar/T38kk4h1DLMyBKziY2BX.jpg', 'public/ini_excel/czfMhOJnG8PRL28yEDBK.xlsx', 'public/ini_file/BCpkFSBqBYdt9mDlveol.pdf', 'Consequatur voluptatibus ratione dolores quia non recusandae vel. Neque incidunt saepe omnis. Deleniti est corrupti rerum amet fugit.', 'Option 1', 'Option 1', '$2y$10$Y5EqIVmuNHQLeBP9b5nBcOoJimJZ8dsOuMH1/DMuiBV5YV/Xzjv2i'),
+(8, 'QbkAU', '0', 'banawi.pangestu@sitompul.in', '2015-09-14', 'public/ini_gambar/Ry0FOMccSBXJxPF7Rmud.jpg', 'public/ini_excel/oKCtG4tJuVwEdQNhmKCd.xlsx', 'public/ini_file/uuYuhCQAuyq0qhN04jk2.pdf', 'Officiis voluptatibus ab est itaque. Enim hic ea similique. Alias praesentium voluptas optio animi dolores quas at voluptas. Velit doloremque minima suscipit sed est sapiente quia nulla.', 'Option 1', 'Option 1', '$2y$10$Dm21PPxm4AHbyt7epTwwKORn5W5Hppe3GJk6fF3cCvgGwdI5g/j7.'),
+(9, 'uCsO3', '1', 'yani.nasyiah@yahoo.co.id', '1974-11-26', 'public/ini_gambar/RDGE2EoqLNOybghPQNQq.jpg', 'public/ini_excel/bc3EEoEyLNMWUJWeFFfj.xlsx', 'public/ini_file/djZ2BqMTNsKCnF8MOri0.pdf', 'Sed in nemo et quo consequuntur et exercitationem. Et est voluptates omnis est ut quidem. Rem repudiandae sed dolorem dolor consequatur blanditiis. Voluptas porro voluptate eaque et nemo at ab aut.', 'Option 2', 'Option 2', '$2y$10$fb56nzQJpMoaB97CObdzFOyXiIBqMaU6Uyfi6E5VT4NlTQg/83E5W'),
+(10, 'vDtxJ', '4', 'ewastuti@yahoo.com', '1991-09-24', 'public/ini_gambar/yeFQ5yQeaSfveBiwNQOO.jpg', 'public/ini_excel/s1ThpzDcem5szI70tY6d.xlsx', 'public/ini_file/h54V2OdBVGXgL4APenJn.pdf', 'Natus suscipit qui illum odit sit illo magni. Fugiat culpa excepturi ut molestiae. Saepe magni ut nihil omnis at commodi numquam. Nisi corrupti optio incidunt at non.', 'Option 1', 'Option 2', '$2y$10$MwwfkhcmUlnWN/wP9XlMFOes/XaVa/iF4mXpP10bOVdRS6uQ/ShNy');
 
 -- --------------------------------------------------------
 
@@ -201,19 +210,19 @@ CREATE TABLE `migrations` (
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(26, '2022_09_26_025222_create_settings_table', 3),
-(27, '2014_10_12_000000_create_users_table', 4),
-(28, '2014_10_12_100000_create_password_resets_table', 4),
-(29, '2019_08_19_000000_create_failed_jobs_table', 4),
-(30, '2019_12_18_172154_create_pengaturans_table', 4),
-(31, '2019_12_18_172249_create_menus_table', 4),
-(32, '2019_12_18_172249_create_moduls_table', 4),
-(33, '2019_12_19_172249_create_contoh_table', 4),
-(34, '2020_01_18_184209_create_jenis_dokumens_table', 4),
-(35, '2020_01_18_185244_create_arsips_table', 4),
-(36, '2020_01_19_094739_create_kantors_table', 4),
-(37, '2020_01_19_110155_add_kantor_id_di_tabel_arsip', 4),
-(38, '2020_01_20_132846_tambah_disk_di_arsip', 4);
+(14, '2022_09_26_025222_create_settings_table', 1),
+(15, '2014_10_12_000000_create_users_table', 2),
+(16, '2014_10_12_100000_create_password_resets_table', 2),
+(17, '2019_08_19_000000_create_failed_jobs_table', 2),
+(18, '2019_12_18_172154_create_pengaturans_table', 2),
+(19, '2019_12_18_172249_create_menus_table', 2),
+(20, '2019_12_18_172249_create_moduls_table', 2),
+(21, '2019_12_19_172249_create_contoh_table', 2),
+(22, '2020_01_18_184209_create_jenis_dokumens_table', 2),
+(23, '2020_01_18_185244_create_arsips_table', 2),
+(24, '2020_01_19_094739_create_kantors_table', 2),
+(25, '2020_01_19_110155_add_kantor_id_di_tabel_arsip', 2),
+(26, '2020_01_20_132846_tambah_disk_di_arsip', 2);
 
 -- --------------------------------------------------------
 
@@ -325,13 +334,6 @@ CREATE TABLE `settings` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `settings`
---
-
-INSERT INTO `settings` (`id`, `key`, `value`, `created_at`, `updated_at`) VALUES
-(1, 'dropBoxAccessToken', 'sl.BbBxAsYdNKyPhoUmr2bUP7c9cAjeHDDy_jKm8AjhPncp5zZdF7McLPsXRB49oF0AUoWVJ9qws_4QIcADE6OvQJGyYb74cTJ5DH2dz0W7B491nlDPZebbHeOnjeLZNgGoU3WlXBg', '2023-03-21 20:17:42', '2023-03-21 20:44:37');
-
 -- --------------------------------------------------------
 
 --
@@ -353,10 +355,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nama`, `email`, `password`, `avatar`, `role`, `remember_token`) VALUES
-(1, 'Hairul Anam', 'superadmin@sipad.com', '$2y$10$EIbAssR3VZhmzdux86bio.ClosCWkx267iFICw5EE.pd3wqQETZ2G', 'http://127.0.0.1:8000/stisla/assets/img/avatar/avatar-1.png', 'superadmin', NULL),
-(2, 'ADMIN KANTOR PUSAT', 'kantor_pusat@sipad.com', '$2y$10$5cLAHmugwi7u5cit0y0Dx.g7ekFPc7j7oodU9eVDiR1/cw1D9T8hS', 'http://127.0.0.1:8000/stisla/assets/img/avatar/avatar-1.png', 'admin', NULL),
-(3, 'ADMIN CABANG UTAMA', 'cabang_utama@sipad.com', '$2y$10$26s1plI88xQQ8KXDW3ZnUuY9zGCF3X8yPb2eUJH4JGmWeGh8bCxmm', 'http://127.0.0.1:8000/stisla/assets/img/avatar/avatar-1.png', 'admin', NULL),
-(4, 'ADMIN CABANG AYAH', 'cabang_ayah@sipad.com', '$2y$10$v/ImtXARWSQSxdwPbJNDZu5VaDDgySz7E9rcYxdyD4dabOLdza69.', 'http://127.0.0.1:8000/stisla/assets/img/avatar/avatar-1.png', 'admin', NULL);
+(1, 'Hairul Anam', 'superadmin@sipad.com', '$2y$10$ax/WzPSiQzlhHOBZPqQVb.Ub22Ykz8QhT/sMpw3i6IHPIQzQCcceu', 'http://127.0.0.1:8000/stisla/assets/img/avatar/avatar-1.png', 'superadmin', NULL),
+(2, 'ADMIN KANTOR PUSAT', 'kantor_pusat@sipad.com', '$2y$10$qs7gprpCaOqJSkA86va1ZOIp7KvFMuQlIpWOsRSuds2GQ8ggZuOkq', 'http://127.0.0.1:8000/stisla/assets/img/avatar/avatar-1.png', 'admin', NULL),
+(3, 'ADMIN CABANG UTAMA', 'cabang_utama@sipad.com', '$2y$10$A35t46be59qRSvIvsRKoF.QBBbKoB0yE3EoqX9CFYsqTlAVbf4YEq', 'http://127.0.0.1:8000/stisla/assets/img/avatar/avatar-1.png', 'admin', NULL),
+(4, 'ADMIN CABANG AYAH', 'cabang_ayah@sipad.com', '$2y$10$PrsW2y4uGPhiUbGJcyUAIesVQPkXrPK8Q0uvvZcgV/vPISnkJZoFG', 'http://127.0.0.1:8000/stisla/assets/img/avatar/avatar-1.png', 'admin', NULL);
 
 --
 -- Indexes for dumped tables
@@ -367,6 +369,7 @@ INSERT INTO `users` (`id`, `nama`, `email`, `password`, `avatar`, `role`, `remem
 --
 ALTER TABLE `arsip`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `arsip_uuid_unique` (`uuid`),
   ADD KEY `arsip_jenis_dokumen_id_foreign` (`jenis_dokumen_id`),
   ADD KEY `arsip_kantor_id_foreign` (`kantor_id`);
 
@@ -455,7 +458,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `arsip`
 --
 ALTER TABLE `arsip`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `contoh`
@@ -491,7 +494,7 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `modul`
@@ -515,7 +518,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
