@@ -18,3 +18,4 @@ Route::post('/masuk', 'AutentikasiController@masuk');
 Route::get('/daftar', 'AutentikasiController@formDaftar')->name('daftar');
 Route::post('/daftar', 'AutentikasiController@daftar');
 Route::get('/', 'AutentikasiController@index');
+Route::get('/download-file/{uuid}', 'AutentikasiController@downloadFile')->name('download-file');

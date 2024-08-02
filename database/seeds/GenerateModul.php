@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Modul;
+use Illuminate\Support\Facades\DB;
 
 class GenerateModul extends Seeder
 {
@@ -14,72 +15,72 @@ class GenerateModul extends Seeder
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('modul')->truncate();
-    	$i = 1;
+        $i = 1;
         Modul::create([
-        	'id'		=> $i++,
-            'nama'		=> 'dashboard',
+            'id'        => $i++,
+            'nama'        => 'dashboard',
             'label'     => 'Dashboard',
-        	'ikon'		=> 'fa fa-fire',
+            'ikon'        => 'fa fa-fire',
         ]);
         Modul::create([
-        	'id'		=> $i++,
-            'nama'		=> 'profil',
+            'id'        => $i++,
+            'nama'        => 'profil',
             'label'     => 'Profil',
-        	'ikon'		=> 'fa fa-user',
+            'ikon'        => 'fa fa-user',
         ]);
         Modul::create([
-        	'id'		=> $i++,
-            'nama'		=> 'contoh',
+            'id'        => $i++,
+            'nama'        => 'contoh',
             'label'     => 'Contoh',
-        	'ikon'		=> 'fa fa-atom',
+            'ikon'        => 'fa fa-atom',
         ]);
         Modul::create([
-        	'id'		=> $i++,
-            'nama'		=> 'surat_masuk',
+            'id'        => $i++,
+            'nama'        => 'surat_masuk',
             'label'     => 'Surat Masuk',
-        	'ikon'		=> 'fa fa-envelope-open',
+            'ikon'        => 'fa fa-envelope-open',
         ]);
         Modul::create([
-        	'id'		=> $i++,
-            'nama'		=> 'surat_keluar',
+            'id'        => $i++,
+            'nama'        => 'surat_keluar',
             'label'     => 'Surat Keluar',
-        	'ikon'		=> 'fa fa-envelope',
+            'ikon'        => 'fa fa-envelope',
         ]);
         Modul::create([
-        	'id'		=> $i++,
-            'nama'		=> 'pegawai',
+            'id'        => $i++,
+            'nama'        => 'pegawai',
             'label'     => 'Pegawai',
-        	'ikon'		=> 'fa fa-user-friends',
+            'ikon'        => 'fa fa-user-friends',
         ]);
         Modul::create([
-        	'id'		=> $i++,
-            'nama'		=> 'organisasi',
+            'id'        => $i++,
+            'nama'        => 'organisasi',
             'label'     => 'Organisasi',
-        	'ikon'		=> 'fa fa-users',
+            'ikon'        => 'fa fa-users',
         ]);
         Modul::create([
-        	'id'		=> $i++,
-            'nama'		=> 'undangan',
+            'id'        => $i++,
+            'nama'        => 'undangan',
             'label'     => 'Undangan',
-        	'ikon'		=> 'fa fa-envelope-open-text',
+            'ikon'        => 'fa fa-envelope-open-text',
         ]);
         Modul::create([
-        	'id'		=> $i++,
-            'nama'		=> 'kantor',
+            'id'        => $i++,
+            'nama'        => 'kantor',
             'label'     => 'Kantor',
-        	'ikon'		=> 'fa fa-university',
+            'ikon'        => 'fa fa-university',
         ]);
         Modul::create([
-        	'id'		=> $i++,
-            'nama'		=> 'pengaturan',
+            'id'        => $i++,
+            'nama'        => 'pengaturan',
             'label'     => 'Pengaturan',
-        	'ikon'		=> 'fa fa-cogs',
+            'ikon'        => 'fa fa-cogs',
         ]);
         Modul::create([
-        	'id'		=> $i++,
-            'nama'		=> 'keluar',
+            'id'        => $i++,
+            'nama'        => 'keluar',
             'label'     => 'Keluar',
-        	'ikon'		=> 'fa fa-sign-out',
+            'ikon'        => 'fa fa-sign-out',
         ]);
     }
 }

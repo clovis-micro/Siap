@@ -31,6 +31,7 @@ class CreateArsipsTable extends Migration
             $table->string('tempat')->nullable();
             $table->string('pengundang')->nullable();
             $table->string('delegasi_hadir')->nullable();
+            $table->string('uuid')->unique();
             $table->timestamps();
         });
     }

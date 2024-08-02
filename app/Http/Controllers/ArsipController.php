@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Str;
 
 class ArsipController extends Controller
 {
@@ -39,6 +40,7 @@ class ArsipController extends Controller
 
     public function index($jenis_dokumen, Request $request)
     {
+
         $jd = \App\JenisDokumen::where('route', $jenis_dokumen)->firstOrFail();
         $data = Arsip::where('jenis_dokumen_id', $jd->id);
         if (Auth::user()->role == 'admin')
@@ -105,6 +107,7 @@ class ArsipController extends Controller
             'tempat'           => $request->tempat,
             'pengundang'       => $request->pengundang,
             'delegasi_hadir'   => $request->delegasi_hadir,
+            'uuid'             => Str::uuid(),
         ];
 
         $data = array_merge($data, $this->uploadFile($request, $jenis_dokumen));
@@ -319,5 +322,11 @@ class ArsipController extends Controller
             'jenis_dokumen' => $ss['jenis_dokumen'],
             'tahun'         => $request->query('tahun'),
         ])->setPaper($ukuran_kertas, $layouts)->download('laporan_' . $jenis_dokumen . '.pdf');
+    }
+
+    public function qr($jenis_dokumen, $uuid)
+    {
+        $arsip = Arsip::query()->where('uuid', $uuid)->firstOrFail();
+        return '<img src="' . $arsip->qr_url2 . '" alt="QR ' . $arsip->id . '" />';
     }
 }
