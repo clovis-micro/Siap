@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Stisla;
 
+use App\Arsip;
 use App\Http\Controllers\Controller;
 use App\Kantor;
 use Illuminate\Http\Request;
 use App\User;
 use App\Models\Pengaturan;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class AutentikasiController extends Controller
 {
@@ -31,21 +35,20 @@ class AutentikasiController extends Controller
             'password'    => 'required',
         ]);
         $user = User::where('email', $request->email)->first();
-        $validator = \Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'password'    => [
                 function ($attribute, $value, $fail) use ($request, $user) {
-                    if (!\Hash::check($request->password, $user->password))
+                    if (!Hash::check($request->password, $user->password))
                         $fail('Password yang anda masukkan salah');
                 }
             ]
         ]);
 
-        if (!\Hash::check($request->password, $user->password)) {
-            // $validator->errors()->add('email', 'Email atau password yang anda masukkan salah');
+        if (!Hash::check($request->password, $user->password)) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        \Auth::login($user, $request->filled('remember'));
+        Auth::login($user, $request->filled('remember'));
         if ($request->query('redirect'))
             return redirect($request->query('redirect'));
         return redirect()->route('dashboard');
@@ -124,7 +127,7 @@ class AutentikasiController extends Controller
         $request->validate($rules);
         $user->nama = $request->nama;
         if ($request->file('avatar')) {
-            $user->avatar = asset(\Storage::url($request->file('avatar')->store('public/avatar')));
+            $user->avatar = asset(Storage::url($request->file('avatar')->store('public/avatar')));
         }
         $user->save();
         return redirect()->back()->with('success_msg', 'Profil berhasil diperbarui');
@@ -134,10 +137,10 @@ class AutentikasiController extends Controller
     {
         $pengaturan = \App\Models\Pengaturan::all()->groupBy('grup_label')->all();
         return view('stisla.pengaturan.index', [
-            'title'                => \App\Models\Modul::where('nama', 'pengaturan')->first()->label,
-            'action'            => route('pengaturan'),
-            'active'            => 'pengaturan',
-            'pengaturan'        => $pengaturan,
+            'title'      => \App\Models\Modul::where('nama', 'pengaturan')->first()->label,
+            'action'     => route('pengaturan'),
+            'active'     => 'pengaturan',
+            'pengaturan' => $pengaturan,
         ]);
     }
 
@@ -156,7 +159,7 @@ class AutentikasiController extends Controller
         foreach ($pengaturan as $p) {
             if ($p->form_type == 'image') {
                 if ($request->file($p->key)) {
-                    $gambar = asetku(\Storage::url($request->file($p->key)->store('public/' . $p->key)));
+                    $gambar = asetku(Storage::url($request->file($p->key)->store('public/' . $p->key)));
                     $p->update([
                         'value' => $gambar,
                     ]);
@@ -168,5 +171,11 @@ class AutentikasiController extends Controller
             }
         }
         return redirect()->back()->with('success_msg', 'Pengaturan berhasil diperbarui');
+    }
+
+    public function downloadFile($uuid)
+    {
+        $arsip = Arsip::query()->where('uuid', $uuid)->firstOrFail();
+        return Storage::download($arsip->berkas, $arsip->nama_berkas);
     }
 }

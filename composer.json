@@ -30,6 +30,13 @@
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         },
+<<<<<<< HEAD
+=======
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ],
+>>>>>>> master
         "files": [
             "app/Helpers/Helper.php"
         ]

@@ -98,6 +98,7 @@
                     @endif
                     <th>Ekstensi</th>
                     <th>Berkas</th>
+                    <th>QR</th>
                     <th>Keterangan</th>
                     <th>Created At</th>
                     @if (Auth::user()->role == 'admin')
@@ -140,6 +141,11 @@
                         @else
                           -
                         @endif
+                      </td>
+                      <td>
+                        <a href="{{ route('arsip.qr', [$jenis_dokumen, $d->uuid]) }}" target="_blank">
+                          <img src="{{ $d->qr_url }}" alt="QR {{ $d->id }}" />
+                        </a>
                       </td>
                       <td>{{ $d->keterangan }}</td>
                       <td>{{ $d->created_at }}</td>
