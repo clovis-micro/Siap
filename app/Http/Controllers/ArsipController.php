@@ -378,8 +378,10 @@ class ArsipController extends Controller
         ])->setPaper($ukuran_kertas, $layouts)->download('laporan_' . $jenis_dokumen . '.pdf');
     }
 
-    public function qr($jenis_dokumen, $uuid)
+    public function qr1($uuid)
     {
+        dd(1);
+        return 1;
         $arsip = Arsip::query()->where('uuid', $uuid)->firstOrFail();
         return '<img src="' . $arsip->qr_url2 . '" alt="QR ' . $arsip->id . '" />';
     }
