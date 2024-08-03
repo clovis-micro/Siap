@@ -47,15 +47,25 @@ class Arsip extends Model
         return '<span class="badge badge-info">' . $this->ekstensi_berkas . '</span>';
     }
 
+    // public function getQrUrlAttribute()
+    // {
+    // return 'data:image/png;base64,' . \Milon\Barcode\Facades\DNS2DFacade::getBarcodePNG(route('download-file', $this->uuid), 'QRCODE', 3, 3);
+    // return route('download-file', ['uuid' => $this->uuid]);
+    // }
+
+    // public function getQrUrl2Attribute()
+    // {
+    // return 'data:image/png;base64,' . \Milon\Barcode\Facades\DNS2DFacade::getBarcodePNG(route('download-file', $this->uuid), 'QRCODE', 10, 10);
+    // return route('download-file', ['uuid' => $this->uuid]);
+    // }
+
     public function getQrUrlAttribute()
     {
-        return 'data:image/png;base64,' . \Milon\Barcode\Facades\DNS2DFacade::getBarcodePNG(route('download-file', $this->uuid), 'QRCODE', 3, 3);
-        return route('download-file', ['uuid' => $this->uuid]);
+        return \Milon\Barcode\Facades\DNS2DFacade::getBarcodeHTML(route('download-file', $this->uuid), 'QRCODE', 3, 3);
     }
 
     public function getQrUrl2Attribute()
     {
-        return 'data:image/png;base64,' . \Milon\Barcode\Facades\DNS2DFacade::getBarcodePNG(route('download-file', $this->uuid), 'QRCODE', 10, 10);
-        return route('download-file', ['uuid' => $this->uuid]);
+        return \Milon\Barcode\Facades\DNS2DFacade::getBarcodeHTML(route('download-file', $this->uuid), 'QRCODE', 10, 10);
     }
 }

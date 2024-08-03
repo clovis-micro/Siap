@@ -143,8 +143,9 @@
                         @endif
                       </td>
                       <td>
-                        <a href="{{ route('arsip.qr', [$jenis_dokumen, $d->uuid]) }}" target="_blank">
-                          <img src="{{ $d->qr_url }}" alt="QR {{ $d->id }}" />
+                        <a href="{{ route('arsip.qr1', ['uuid' => $d->uuid]) }}" target="_blank">
+                          {{-- <img src="{{ $d->qr_url }}" alt="QR {{ $d->id }}" /> --}}
+                          {!! $d->qr_url !!}
                         </a>
                       </td>
                       <td>{{ $d->keterangan }}</td>
