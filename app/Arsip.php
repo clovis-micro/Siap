@@ -49,14 +49,14 @@ class Arsip extends Model
 
     // public function getQrUrlAttribute()
     // {
-    //     return 'data:image/png;base64,' . \Milon\Barcode\Facades\DNS2DFacade::getBarcodePNG(route('download-file', $this->uuid), 'QRCODE', 3, 3);
-    //     return route('download-file', ['uuid' => $this->uuid]);
+    // return 'data:image/png;base64,' . \Milon\Barcode\Facades\DNS2DFacade::getBarcodePNG(route('download-file', $this->uuid), 'QRCODE', 3, 3);
+    // return route('download-file', ['uuid' => $this->uuid]);
     // }
 
     // public function getQrUrl2Attribute()
     // {
-    //     return 'data:image/png;base64,' . \Milon\Barcode\Facades\DNS2DFacade::getBarcodePNG(route('download-file', $this->uuid), 'QRCODE', 10, 10);
-    //     return route('download-file', ['uuid' => $this->uuid]);
+    // return 'data:image/png;base64,' . \Milon\Barcode\Facades\DNS2DFacade::getBarcodePNG(route('download-file', $this->uuid), 'QRCODE', 10, 10);
+    // return route('download-file', ['uuid' => $this->uuid]);
     // }
 
     public function getQrUrlAttribute()

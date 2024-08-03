@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(\App\Http\Middleware\Masuk::class)->group(function () {
     Route::get('/qr-view', function () {
         $arsip = \App\Arsip::query()->where('uuid', request('uuid'))->firstOrFail();
-        return $arsip->qr_url2;
+        return '<center style="margin-top: 20px;">' . $arsip->qr_url2 . '</center>';
     })->name('arsip.qr1');
     Route::get('/arsip/{jenis_dokumen}', 'ArsipController@index')->name('arsip');
     Route::get('/arsip/{jenis_dokumen}/tambah', 'ArsipController@create')->name('arsip.create');
