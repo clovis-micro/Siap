@@ -39,16 +39,17 @@
                         <ul class="nav navbar-nav menu_nav justify-content-center">
                             <li class="nav-item active"><a class="nav-link" href="{{ url('') }}">Beranda</a></li>
                             <li class="nav-item"><a target="_blank" class="nav-link"
-                                    href="https://wa.me/{{ config('stisla.whatsapp_developer') }}">WhatsApp</a></li>
-                            <li class="nav-item"><a class="nav-link"
-                                    href="https://github.com/{{ config('stisla.github_developer') }}">Github</a>
+                                    href="https://wa.me/{{ config('stisla.whatsapp_developer') }}">Contact US</a></li>
+                            {{-- <li class="nav-item"><a class="nav-link"
+                                    href="https://github.com/{{ config('stisla.github_developer') }}">Github</a> --}}
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            @if(Auth::check())
-                            <li class="nav-item"><a href="{{ route('dashboard') }}" class="primary_btn">Dashboard</a>
-                            </li>
+                            @if (Auth::check())
+                                <li class="nav-item"><a href="{{ route('dashboard') }}"
+                                        class="primary_btn">Dashboard</a>
+                                </li>
                             @else
-                            <li class="nav-item"><a href="{{ route('masuk') }}" class="primary_btn">Masuk</a></li>
+                                <li class="nav-item"><a href="{{ route('masuk') }}" class="primary_btn">Masuk</a></li>
                             @endif
                         </ul>
                     </div>
@@ -65,7 +66,8 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="home_left_img">
-                            <img class="img-fluid" src="{{ asset('stisla/welcome/img/banner/home-left.png') }}" alt="">
+                            <img class="img-fluid" src="{{ asset('stisla/welcome/img/banner/home-d.png') }}"
+                            alt="">
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -115,8 +117,7 @@
 
         window.addEventListener("resize", fixHeight);
 
-		fixHeight();
-
+        fixHeight();
     </script>
 </body>
 

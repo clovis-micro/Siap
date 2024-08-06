@@ -21,7 +21,10 @@ Route::middleware(\App\Http\Middleware\Masuk::class)->group(function () {
 });
 
 Route::get('backupAllDb', 'KantorController@backupAllDb')->name('backupAllDb');
+
 Route::get('downloadBackupAllDb', 'KantorController@downloadBackupAllDb')->name('downloadBackupAllDb');
+
+
 // Route::get('/phpinfo', function () {
 //     phpinfo();
 // });

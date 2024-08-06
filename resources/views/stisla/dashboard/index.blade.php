@@ -39,6 +39,7 @@
       $organisasi_count = \App\Arsip::where('jenis_dokumen_id', 5)
           ->where('kantor_id', Auth::user()->kantor->id)
           ->count();
+          
   }
 @endphp
 

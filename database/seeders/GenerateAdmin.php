@@ -17,7 +17,7 @@ class GenerateAdmin extends Seeder
         User::updateOrCreate([
             'id'    => 1,
         ], [
-            'nama'     => 'Hairul Anam',
+            'nama'     => 'Admin',
             'email'    => 'superadmin@sipad.com',
             'password' => bcrypt('superadmin'),
             'avatar'   => asset('stisla/assets/img/avatar/avatar-1.png'),
